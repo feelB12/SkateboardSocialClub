@@ -1,0 +1,32 @@
+
+<!--base.html.twig,  même header et le même footer dans chacune de mes pages,
+Cette page est vulgairement mon gabarit.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--Dans le title appel la fonction block metatitle qui va me permettre
+    d'afficher mon metatitle sur toutes les pages de mon site-->
+    <title>{% block metatitle %}Skateboard Social Club{% endblock metatitle%}</title>
+    <!--J'utilise la balise link et la fonction asset pour rattacher ma feuille de style à mon html-->
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bookdetails.css') }}">
+
+</head>
+<body>
+<header class="header">
+    <h1>Bienvenue au Skateboard Social Club</h1>
+    <nav class="nav-bar">
+        <ul class="menu">
+        </ul>
+    </nav>
+</header>
+<main>
+
+    {% block main %}{% endblock main %}
+
+</main>
+<footer class="footer">
+</footer>
+</body>
+</html>
