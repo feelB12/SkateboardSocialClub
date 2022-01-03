@@ -1,0 +1,26 @@
+{% extends "admin/base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+    <main>
+        <section class="section">
+            <a href="{{ path('admin_author_create')}}">Créer un auteur</a>
+            {% for author in authors %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ author.firstName }} {{ author.lastName }}</h2>
+                        {% if author.deathDate %}
+                            <h3>Mort le : {{ author.deathDate | date('D-m-Y') }}</h3>
+                        {% else %}
+                            Cet auteur est vivant
+                        {% endif %}
+                        <a href="{{ path('admin_author', {'id': author.id}) }}">Voir l'auteur</a>
+                        <a href="{{ path('admin_author_update', {'id': author.id}) }}">Modifier l'auteur</a>
+                        <a href="{{ path('admin_author_delete', {'id': author.id}) }}">Supprimer l'auteur</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}

@@ -1,0 +1,22 @@
+{% extends "admin/base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/books.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+    <main>
+        <section class="section">
+            {% for genres in genres %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ genres.title }}</h2>
+                        <h3>{{ genres.description }}</h3>
+                    </div>
+                    {#                    <div class="card-image">#}
+                    {#                        <img src="{{ books.image }}" alt="Image du livre">#}
+                    {#                    </div>#}
+                    <a class="link" href="{{ path('genre', {"id": genres.id}) }}">En savoir plus</a>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}

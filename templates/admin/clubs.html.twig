@@ -1,0 +1,25 @@
+{% extends "admin/base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/books.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+    <main>
+        <a class="link" href="{{ path('admin_book_create') }}">Créer un livre</a>
+        <section class="section">
+            {% for book in books %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ book.title }}</h2>
+                        <img src="{{ asset('uploads/cover/'~book.coverFilename) }}" alt="">
+                        {% if book.author %}
+                            <h3>{{ book.author.firstName }} {{ book.author.lastName }}</h3>
+                        {% endif %}
+                    </div>
+                    <a class="link" href="{{ path('admin_book', {"id": book.id}) }}">Voir le livre</a>
+                    <a class="link" href="{{ path('admin_book_update', {"id": book.id}) }}">Modifier le livre</a>
+                    <a class="link" href="{{ path('admin_book_delete', {"id": book.id}) }}">Supprimer le livre</a>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}
